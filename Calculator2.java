@@ -1,6 +1,7 @@
 package solution;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,7 @@ public class Calculator2
     private JTextField infixExpression;
     private JLabel resultLabel;
     private JButton calculateButton;
+    private JButton oneButton, twoButton, threeButton, fourButton;
     private JButton clearButton;
     //private JButton addButton;
     //private JButton subButton;
@@ -32,18 +34,26 @@ public class Calculator2
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
-        calculator.setSize(420,170);
+        calculator.setSize(420,210);
         calculator.setTitle("Calculator");
+        
         
         
         // Initializing fields
         buttonPanel = new JPanel();
         textFieldPanel = new JPanel();
+        
         //addButton = new JButton("+");
         //subButton = new JButton("-");
         //multButton = new JButton("*");
         //divButton = new JButton("/");
+        oneButton = new JButton("1");
+        twoButton = new JButton("2");
+        threeButton = new JButton("3");
+        fourButton = new JButton("4");
         calculateButton = new JButton("=");
+        
+        
         clearButton = new JButton("Clear");
         infixExpression = new JTextField(20);
         resultLabel = new JLabel("Result");
@@ -97,8 +107,21 @@ public class Calculator2
         
         });
 
+        buttonPanel.add(oneButton);
+        buttonPanel.add(twoButton);
+        buttonPanel.add(threeButton);
+        buttonPanel.add(fourButton);
+        buttonPanel.add(new JButton("5"));
+        buttonPanel.add(new JButton("6"));
+        buttonPanel.add(new JButton("7"));
+        buttonPanel.add(new JButton("8"));
+        buttonPanel.add(new JButton("9"));
+        buttonPanel.add(new JButton("0"));
+
         buttonPanel.add(calculateButton);
         buttonPanel.add(clearButton);
+        buttonPanel.setLayout(new GridLayout(4, 3));
+       
         calculator.add( buttonPanel, BorderLayout.PAGE_END);
     
         
