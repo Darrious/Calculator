@@ -1,6 +1,7 @@
 package solution;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,12 +18,11 @@ public class Calculator2
     private JTextField infixExpression;
     private JLabel resultLabel;
     private JButton calculateButton;
-    private JButton oneButton, twoButton, threeButton, fourButton;
     private JButton clearButton;
-    //private JButton addButton;
-    //private JButton subButton;
-    //private JButton divButton;
-    //private JButton multButton;
+    private JButton addButton;
+    private JButton subButton;
+    private JButton divButton;
+    private JButton multButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     private JPanel resultPanel;
@@ -34,7 +34,7 @@ public class Calculator2
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
-        calculator.setSize(420,210);
+        calculator.setSize(420,250);
         calculator.setTitle("Calculator");
         
         
@@ -43,18 +43,14 @@ public class Calculator2
         buttonPanel = new JPanel();
         textFieldPanel = new JPanel();
         
-        //addButton = new JButton("+");
-        //subButton = new JButton("-");
-        //multButton = new JButton("*");
-        //divButton = new JButton("/");
-        oneButton = new JButton("1");
-        twoButton = new JButton("2");
-        threeButton = new JButton("3");
-        fourButton = new JButton("4");
+        addButton = new JButton("+");
+        subButton = new JButton("-");
+        multButton = new JButton("x");
+        divButton = new JButton("/");
         calculateButton = new JButton("=");
         
         
-        clearButton = new JButton("Clear");
+        clearButton = new JButton("C");
         infixExpression = new JTextField(20);
         resultLabel = new JLabel("Result");
         resultPanel = new JPanel();
@@ -106,21 +102,40 @@ public class Calculator2
             }
         
         });
-
-        buttonPanel.add(oneButton);
-        buttonPanel.add(twoButton);
-        buttonPanel.add(threeButton);
-        buttonPanel.add(fourButton);
-        buttonPanel.add(new JButton("5"));
-        buttonPanel.add(new JButton("6"));
+        
+        
+        buttonPanel.add(clearButton);
+        buttonPanel.add(new JButton("+/-"));
+        buttonPanel.add(new JButton("%"));
+        buttonPanel.add(divButton);
+        
         buttonPanel.add(new JButton("7"));
         buttonPanel.add(new JButton("8"));
         buttonPanel.add(new JButton("9"));
+        buttonPanel.add(multButton);
+        
+        buttonPanel.add(new JButton("4"));
+        buttonPanel.add(new JButton("5"));
+        buttonPanel.add(new JButton("6"));
+        buttonPanel.add(subButton);
+        
+        buttonPanel.add(new JButton("1"));
+        buttonPanel.add(new JButton("2"));
+        buttonPanel.add(new JButton("3"));
+        buttonPanel.add(addButton);
+        
+        buttonPanel.add(new JButton(""));
         buttonPanel.add(new JButton("0"));
-
+        buttonPanel.add(new JButton("."));
         buttonPanel.add(calculateButton);
-        buttonPanel.add(clearButton);
-        buttonPanel.setLayout(new GridLayout(4, 3));
+        
+        calculateButton.setBackground(Color.ORANGE);
+        subButton.setBackground(Color.ORANGE);
+        addButton.setBackground(Color.ORANGE);
+        multButton.setBackground(Color.ORANGE);
+        divButton.setBackground(Color.ORANGE);
+        
+        buttonPanel.setLayout(new GridLayout(5, 5));
        
         calculator.add( buttonPanel, BorderLayout.PAGE_END);
     
