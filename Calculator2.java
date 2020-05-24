@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 
 /**
  * @author Darrious Barger
@@ -34,6 +35,8 @@ public class Calculator2
     
     public Calculator2()
     {
+        numberListener numList = new numberListener();
+        
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
@@ -136,6 +139,7 @@ public class Calculator2
         buttonPanel.add(subButton);
         
         buttonPanel.add(oneButton);
+        oneButton.addActionListener(numList);
         buttonPanel.add(twoButton);
         buttonPanel.add(threeButton);
         buttonPanel.add(addButton);
@@ -183,10 +187,22 @@ public class Calculator2
     }
     
 
-    
-    
     public static void main(String[] args)
     {
         Calculator2 calc = new Calculator2();
+    }
+    
+    
+    private class numberListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent arg0)
+        {
+               
+            
+               infixExpression.setText(infixExpression.getText() + 1);
+        }
+        
     }
 }
