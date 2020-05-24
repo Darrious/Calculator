@@ -18,11 +18,14 @@ public class Calculator2
     private JTextField infixExpression;
     private JLabel resultLabel;
     private JButton calculateButton;
-    private JButton clearButton;
+    private JButton clearButton, dotButton;
     private JButton addButton;
     private JButton subButton;
     private JButton divButton;
     private JButton multButton;
+    private JButton oneButton, twoButton, threeButton, fourButton,
+            fiveButton, sixButton, sevenButton, eightButton, nineButton,
+            zeroButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     private JPanel resultPanel;
@@ -47,6 +50,19 @@ public class Calculator2
         subButton = new JButton("-");
         multButton = new JButton("x");
         divButton = new JButton("/");
+        oneButton = new JButton("1");
+        twoButton = new JButton("2");
+        threeButton = new JButton("3");
+        fourButton = new JButton("4");
+        fiveButton = new JButton("5");
+        sixButton = new JButton("6");
+        sevenButton = new JButton("7");
+        eightButton = new JButton("8");
+        nineButton = new JButton("9");
+        zeroButton = new JButton("0");
+        dotButton = new JButton(".");
+
+        
         calculateButton = new JButton("=");
         
         
@@ -109,25 +125,27 @@ public class Calculator2
         buttonPanel.add(new JButton("%"));
         buttonPanel.add(divButton);
         
-        buttonPanel.add(new JButton("7"));
-        buttonPanel.add(new JButton("8"));
-        buttonPanel.add(new JButton("9"));
+        buttonPanel.add(sevenButton);
+        buttonPanel.add(eightButton);
+        buttonPanel.add(nineButton);
         buttonPanel.add(multButton);
         
-        buttonPanel.add(new JButton("4"));
-        buttonPanel.add(new JButton("5"));
-        buttonPanel.add(new JButton("6"));
+        buttonPanel.add(fourButton);
+        buttonPanel.add(fiveButton);
+        buttonPanel.add(sixButton);
         buttonPanel.add(subButton);
         
-        buttonPanel.add(new JButton("1"));
-        buttonPanel.add(new JButton("2"));
-        buttonPanel.add(new JButton("3"));
+        buttonPanel.add(oneButton);
+        buttonPanel.add(twoButton);
+        buttonPanel.add(threeButton);
         buttonPanel.add(addButton);
         
         buttonPanel.add(new JButton(""));
-        buttonPanel.add(new JButton("0"));
-        buttonPanel.add(new JButton("."));
+        buttonPanel.add(zeroButton);
+        buttonPanel.add(dotButton);
         buttonPanel.add(calculateButton);
+        
+   
         
         calculateButton.setBackground(Color.ORANGE);
         subButton.setBackground(Color.ORANGE);
