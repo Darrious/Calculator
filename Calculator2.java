@@ -139,7 +139,6 @@ public class Calculator2
         buttonPanel.add(subButton);
         
         buttonPanel.add(oneButton);
-        oneButton.addActionListener(numList);
         buttonPanel.add(twoButton);
         buttonPanel.add(threeButton);
         buttonPanel.add(addButton);
@@ -149,7 +148,23 @@ public class Calculator2
         buttonPanel.add(dotButton);
         buttonPanel.add(calculateButton);
         
-   
+        // Adding action listeners to some buttons
+        oneButton.addActionListener(numList);
+        twoButton.addActionListener(numList);
+        threeButton.addActionListener(numList);
+        fourButton.addActionListener(numList);
+        fiveButton.addActionListener(numList);
+        sixButton.addActionListener(numList);
+        sevenButton.addActionListener(numList);
+        eightButton.addActionListener(numList);
+        nineButton.addActionListener(numList);
+        zeroButton.addActionListener(numList);
+        addButton.addActionListener(numList);
+        subButton.addActionListener(numList);
+        divButton.addActionListener(numList);
+        multButton.addActionListener(numList);
+
+        
         
         calculateButton.setBackground(Color.ORANGE);
         subButton.setBackground(Color.ORANGE);
@@ -193,15 +208,14 @@ public class Calculator2
     }
     
     
+    
+    // We need to find a way to get text form button name
     private class numberListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent arg0)
         {
-               
-            
-               infixExpression.setText(infixExpression.getText() + 1);
+               infixExpression.setText(infixExpression.getText() + ((JButton) arg0.getSource()).getText());
         }
         
     }
