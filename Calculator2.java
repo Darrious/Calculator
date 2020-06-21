@@ -26,7 +26,7 @@ public class Calculator2
     private JButton multButton;
     private JButton oneButton, twoButton, threeButton, fourButton,
             fiveButton, sixButton, sevenButton, eightButton, nineButton,
-            zeroButton;
+            zeroButton, backButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     private JPanel resultPanel;
@@ -64,6 +64,7 @@ public class Calculator2
         nineButton = new JButton("9");
         zeroButton = new JButton("0");
         dotButton = new JButton(".");
+        backButton = new JButton("Back");
 
         
         calculateButton = new JButton("=");
@@ -122,31 +123,45 @@ public class Calculator2
         
         });
         
+        backButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                infixExpression.setText(infixExpression.getText().substring(0, infixExpression.getText().length() - 1));
+                
+            }
+            
+        
+        });
         
         buttonPanel.add(clearButton);
         buttonPanel.add(new JButton("+/-"));
         buttonPanel.add(new JButton("%"));
-        buttonPanel.add(divButton);
-        
+        buttonPanel.add(backButton);
+                
         buttonPanel.add(sevenButton);
         buttonPanel.add(eightButton);
         buttonPanel.add(nineButton);
-        buttonPanel.add(multButton);
-        
+        buttonPanel.add(divButton);
+
+               
         buttonPanel.add(fourButton);
         buttonPanel.add(fiveButton);
         buttonPanel.add(sixButton);
-        buttonPanel.add(subButton);
+        buttonPanel.add(multButton);
         
         buttonPanel.add(oneButton);
         buttonPanel.add(twoButton);
         buttonPanel.add(threeButton);
+        buttonPanel.add(subButton);
         buttonPanel.add(addButton);
         
-        buttonPanel.add(new JButton(""));
         buttonPanel.add(zeroButton);
         buttonPanel.add(dotButton);
         buttonPanel.add(calculateButton);
+        buttonPanel.add(addButton);
         
         // Adding action listeners to some buttons
         oneButton.addActionListener(numList);
@@ -166,7 +181,7 @@ public class Calculator2
 
         
         
-        calculateButton.setBackground(Color.ORANGE);
+        backButton.setBackground(Color.ORANGE);
         subButton.setBackground(Color.ORANGE);
         addButton.setBackground(Color.ORANGE);
         multButton.setBackground(Color.ORANGE);
@@ -208,8 +223,8 @@ public class Calculator2
     }
     
     
+   
     
-    // We need to find a way to get text form button name
     private class numberListener implements ActionListener
     {
         @Override
