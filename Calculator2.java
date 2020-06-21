@@ -26,7 +26,7 @@ public class Calculator2
     private JButton multButton;
     private JButton oneButton, twoButton, threeButton, fourButton,
             fiveButton, sixButton, sevenButton, eightButton, nineButton,
-            zeroButton, backButton;
+            zeroButton, backButton, percentButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     private JPanel resultPanel;
@@ -65,8 +65,7 @@ public class Calculator2
         zeroButton = new JButton("0");
         dotButton = new JButton(".");
         backButton = new JButton("Back");
-
-        
+        percentButton = new JButton("%");
         calculateButton = new JButton("=");
         
         
@@ -136,9 +135,11 @@ public class Calculator2
         
         });
         
+  
+        
         buttonPanel.add(clearButton);
         buttonPanel.add(new JButton("+/-"));
-        buttonPanel.add(new JButton("%"));
+        buttonPanel.add(percentButton);
         buttonPanel.add(backButton);
                 
         buttonPanel.add(sevenButton);
