@@ -231,7 +231,11 @@ public class Calculator2
         @Override
         public void actionPerformed(ActionEvent arg0)
         {
-               infixExpression.setText(infixExpression.getText() + ((JButton) arg0.getSource()).getText());
+               String symbol = ((JButton) arg0.getSource()).getText();
+               
+               if (symbol == "x") symbol = "*";
+               
+               infixExpression.setText(infixExpression.getText() + symbol);
         }
         
     }
