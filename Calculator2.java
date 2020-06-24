@@ -67,7 +67,7 @@ public class Calculator2
         backButton = new JButton("Back");
         percentButton = new JButton("%");
         calculateButton = new JButton("=");
-        
+        JButton pmButton = new JButton("+/-");
         
         clearButton = new JButton("C");
         infixExpression = new JTextField(20);
@@ -135,10 +135,30 @@ public class Calculator2
         
         });
         
-  
+        pmButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                String exp = infixExpression.getText();
+                
+                if (exp.charAt(0) == '-')
+                {
+                    infixExpression.setText(infixExpression.getText().substring(1, infixExpression.getText().length()));
+                }
+                else
+                {
+                    infixExpression.setText("-" + exp);
+                }
+                
+            }
+            
+        });
+        
         
         buttonPanel.add(clearButton);
-        buttonPanel.add(new JButton("+/-"));
+        buttonPanel.add(pmButton);
         buttonPanel.add(percentButton);
         buttonPanel.add(backButton);
                 
