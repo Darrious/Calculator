@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -28,11 +29,12 @@ public class Calculator2
     private JButton multButton;
     private JButton oneButton, twoButton, threeButton, fourButton,
             fiveButton, sixButton, sevenButton, eightButton, nineButton,
-            zeroButton, backButton, percentButton;
+            zeroButton, backButton, hisButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     //private JPanel resultPanel;
     private ExpressionEvaluator eval;
+    private ArrayList<String> hisArr;
 
     
     public Calculator2()
@@ -48,6 +50,7 @@ public class Calculator2
         
         
         // Initializing fields
+        hisArr = new ArrayList<String>();
         buttonPanel = new JPanel();
         textFieldPanel = new JPanel();
         
@@ -67,7 +70,7 @@ public class Calculator2
         zeroButton = new JButton("0");
         dotButton = new JButton(".");
         backButton = new JButton("Back");
-        percentButton = new JButton("%");
+        hisButton = new JButton("History");
         calculateButton = new JButton("=");
         JButton pmButton = new JButton("+/-");
         
@@ -88,6 +91,18 @@ public class Calculator2
         resultLabel.setVisible(true);
         clearButton.setVisible(true);
         
+        hisButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                
+                History();
+            }
+            
+        });
+        
         calculateButton.addActionListener(new ActionListener()
         {
 
@@ -106,6 +121,7 @@ public class Calculator2
                     answer = "ERROR";
                 }
                 
+                hisArr.add(infixExpression.getText() + " = " + answer);
                 infixExpression.setText(answer);
                 
             }
@@ -162,7 +178,7 @@ public class Calculator2
         
         buttonPanel.add(clearButton);
         buttonPanel.add(pmButton);
-        buttonPanel.add(percentButton);
+        buttonPanel.add(hisButton);
         buttonPanel.add(backButton);
                 
         buttonPanel.add(sevenButton);
@@ -267,4 +283,31 @@ public class Calculator2
         }
         
     }
+    
+    private void History()
+    {
+        
+       //Setting up frame
+        JFrame history = new JFrame();
+        history.setVisible(true);
+        history.setSize(420,225);
+        history.setTitle("History");
+        
+        JTextArea hisText = new JTextArea();
+        
+        String output = "";
+        for (int i = 0; i < hisArr.size(); i++  )
+        {
+            output = output + "\n" + hisArr.get(i);
+        }
+        
+        hisText.setText(output);
+        history.add(hisText);
+        
+        
+        
+        
+    }
+    
+    
 }
