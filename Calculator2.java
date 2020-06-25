@@ -94,21 +94,20 @@ public class Calculator2
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                
+                String answer;
                 String infix = getField().getText();
-                Double answer = eval.evaluate(eval.toPostfix(infix));
-                
-                /*
-                if (!Character.isDigit(infix.charAt(infix.length() -1)))
+                try
                 {
-                    infixExpression.setText("ERROR");
+                    answer = Double.toString(eval.evaluate(eval.toPostfix(infix)));
 
-                }*/
+                }
+                catch(Exception e1)
+                {
+                    answer = "ERROR";
+                }
                 
-                //else
-                //{
-                    infixExpression.setText(Double.toString(answer));
-                //}
+                infixExpression.setText(answer);
+                
             }
         
         });
