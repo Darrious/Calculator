@@ -2,6 +2,7 @@ package solution;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -97,16 +98,17 @@ public class Calculator2
                 String infix = getField().getText();
                 Double answer = eval.evaluate(eval.toPostfix(infix));
                 
+                /*
                 if (!Character.isDigit(infix.charAt(infix.length() -1)))
                 {
                     infixExpression.setText("ERROR");
 
-                }
+                }*/
                 
-                else
-                {
+                //else
+                //{
                     infixExpression.setText(Double.toString(answer));
-                }
+                //}
             }
         
         });
