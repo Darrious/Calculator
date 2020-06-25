@@ -2,6 +2,7 @@ package solution;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ public class Calculator2
             zeroButton, backButton, percentButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
-    private JPanel resultPanel;
+    //private JPanel resultPanel;
     private ExpressionEvaluator eval;
 
     
@@ -40,7 +41,7 @@ public class Calculator2
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
-        calculator.setSize(420,250);
+        calculator.setSize(420,225);
         calculator.setTitle("Calculator");
         
         
@@ -70,10 +71,11 @@ public class Calculator2
         JButton pmButton = new JButton("+/-");
         
         clearButton = new JButton("C");
-        infixExpression = new JTextField(20);
+        infixExpression = new JTextField(15);
         resultLabel = new JLabel("Result");
-        resultPanel = new JPanel();
+        //resultPanel = new JPanel();
         eval = new ExpressionEvaluator();
+        
         
         // Setting names for JUnit tests
         infixExpression.setName("infixExpression");
@@ -97,13 +99,13 @@ public class Calculator2
                 
                 if (!Character.isDigit(infix.charAt(infix.length() -1)))
                 {
-                    resultLabel.setText("Result = error");
+                    infixExpression.setText("ERROR");
 
                 }
                 
                 else
                 {
-                    resultLabel.setText("Result = " + Double.toString(answer));
+                    infixExpression.setText(Double.toString(answer));
                 }
             }
         
@@ -210,15 +212,19 @@ public class Calculator2
         
         buttonPanel.setLayout(new GridLayout(5, 5));
        
-        calculator.add( buttonPanel, BorderLayout.PAGE_END);
+        calculator.add(buttonPanel, BorderLayout.PAGE_END);
     
         
-        textFieldPanel.add(infixExpression);
-        calculator.add( textFieldPanel, BorderLayout.PAGE_START);
-       
         
-        resultPanel.add( resultLabel);
-        calculator.add( resultPanel, BorderLayout.CENTER);
+        Font font = new Font("Verdana", Font.BOLD, 25);
+        infixExpression.setFont(font);
+        textFieldPanel.add(infixExpression);
+        
+        
+        calculator.add(textFieldPanel, BorderLayout.PAGE_START);
+        
+        //resultPanel.add( resultLabel);
+        //calculator.add( resultPanel, BorderLayout.CENTER);
         
         
         calculator.setVisible(true);
@@ -250,7 +256,8 @@ public class Calculator2
     {
         @Override
         public void actionPerformed(ActionEvent arg0)
-        {
+        {      
+               
                String symbol = ((JButton) arg0.getSource()).getText();
                
                if (symbol == "x") symbol = "*";
