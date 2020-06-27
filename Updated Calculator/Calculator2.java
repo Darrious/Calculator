@@ -1,10 +1,12 @@
-package solution;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
@@ -26,11 +28,12 @@ public class Calculator2
     private JButton multButton;
     private JButton oneButton, twoButton, threeButton, fourButton,
             fiveButton, sixButton, sevenButton, eightButton, nineButton,
-            zeroButton, backButton, percentButton;
+            zeroButton, backButton, hisButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
-    private JPanel resultPanel;
+    //private JPanel resultPanel;
     private ExpressionEvaluator eval;
+    private ArrayList<String> hisArr;
 
     
     public Calculator2()
@@ -40,12 +43,13 @@ public class Calculator2
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
-        calculator.setSize(420,250);
+        calculator.setSize(420,225);
         calculator.setTitle("Calculator");
-        
+        calculator.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         
         // Initializing fields
+        hisArr = new ArrayList<String>();
         buttonPanel = new JPanel();
         textFieldPanel = new JPanel();
         
@@ -65,15 +69,16 @@ public class Calculator2
         zeroButton = new JButton("0");
         dotButton = new JButton(".");
         backButton = new JButton("Back");
-        percentButton = new JButton("%");
+        hisButton = new JButton("History");
         calculateButton = new JButton("=");
-        
+        JButton pmButton = new JButton("+/-");
         
         clearButton = new JButton("C");
-        infixExpression = new JTextField(20);
+        infixExpression = new JTextField(15);
         resultLabel = new JLabel("Result");
-        resultPanel = new JPanel();
+        //resultPanel = new JPanel();
         eval = new ExpressionEvaluator();
+        
         
         // Setting names for JUnit tests
         infixExpression.setName("infixExpression");
@@ -85,26 +90,39 @@ public class Calculator2
         resultLabel.setVisible(true);
         clearButton.setVisible(true);
         
+        hisButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                
+                History();
+            }
+            
+        });
+        
         calculateButton.addActionListener(new ActionListener()
         {
 
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                
+                String answer;
                 String infix = getField().getText();
-                Double answer = eval.evaluate(eval.toPostfix(infix));
-                
-                if (!Character.isDigit(infix.charAt(infix.length() -1)))
+                try
                 {
-                    resultLabel.setText("Result = error");
+                    answer = Double.toString(eval.evaluate(eval.toPostfix(infix)));
 
                 }
-                
-                else
+                catch(Exception e1)
                 {
-                    resultLabel.setText("Result = " + Double.toString(answer));
+                    answer = "ERROR";
                 }
+                
+                hisArr.add(infixExpression.getText() + " = " + answer);
+                infixExpression.setText(answer);
+                
             }
         
         });
@@ -135,11 +153,31 @@ public class Calculator2
         
         });
         
-  
+        pmButton.addActionListener(new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0)
+            {
+                String exp = infixExpression.getText();
+                
+                if (exp.charAt(0) == '-')
+                {
+                    infixExpression.setText(infixExpression.getText().substring(1, infixExpression.getText().length()));
+                }
+                else
+                {
+                    infixExpression.setText("-" + exp);
+                }
+                
+            }
+            
+        });
+        
         
         buttonPanel.add(clearButton);
-        buttonPanel.add(new JButton("+/-"));
-        buttonPanel.add(percentButton);
+        buttonPanel.add(pmButton);
+        buttonPanel.add(hisButton);
         buttonPanel.add(backButton);
                 
         buttonPanel.add(sevenButton);
@@ -179,7 +217,7 @@ public class Calculator2
         subButton.addActionListener(numList);
         divButton.addActionListener(numList);
         multButton.addActionListener(numList);
-
+        dotButton.addActionListener(numList);
         
         
         backButton.setBackground(Color.ORANGE);
@@ -190,15 +228,19 @@ public class Calculator2
         
         buttonPanel.setLayout(new GridLayout(5, 5));
        
-        calculator.add( buttonPanel, BorderLayout.PAGE_END);
+        calculator.add(buttonPanel, BorderLayout.PAGE_END);
     
         
-        textFieldPanel.add(infixExpression);
-        calculator.add( textFieldPanel, BorderLayout.PAGE_START);
-       
         
-        resultPanel.add( resultLabel);
-        calculator.add( resultPanel, BorderLayout.CENTER);
+        Font font = new Font("Verdana", Font.BOLD, 25);
+        infixExpression.setFont(font);
+        textFieldPanel.add(infixExpression);
+        
+        
+        calculator.add(textFieldPanel, BorderLayout.PAGE_START);
+        
+        //resultPanel.add( resultLabel);
+        //calculator.add( resultPanel, BorderLayout.CENTER);
         
         
         calculator.setVisible(true);
@@ -230,9 +272,41 @@ public class Calculator2
     {
         @Override
         public void actionPerformed(ActionEvent arg0)
-        {
-               infixExpression.setText(infixExpression.getText() + ((JButton) arg0.getSource()).getText());
+        {      
+               
+               String symbol = ((JButton) arg0.getSource()).getText();
+               
+               if (symbol == "x") symbol = "*";
+               
+               infixExpression.setText(infixExpression.getText() + symbol);
         }
         
     }
+    
+    private void History()
+    {
+        
+       //Setting up frame
+        JFrame history = new JFrame();
+        history.setVisible(true);
+        history.setSize(420,225);
+        history.setTitle("History");
+        
+        JTextArea hisText = new JTextArea();
+        
+        String output = "";
+        for (int i = 0; i < hisArr.size(); i++  )
+        {
+            output = output + "\n\n" + hisArr.get(i);
+        }
+        
+        hisText.setText(output);
+        history.add(hisText);
+        
+        
+        
+        
+    }
+    
+    
 }
