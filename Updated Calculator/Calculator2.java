@@ -1,4 +1,3 @@
-package solution;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -46,7 +45,7 @@ public class Calculator2
         calculator.setVisible(true);
         calculator.setSize(420,225);
         calculator.setTitle("Calculator");
-        
+        calculator.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         
         // Initializing fields
@@ -218,7 +217,7 @@ public class Calculator2
         subButton.addActionListener(numList);
         divButton.addActionListener(numList);
         multButton.addActionListener(numList);
-
+        dotButton.addActionListener(numList);
         
         
         backButton.setBackground(Color.ORANGE);
