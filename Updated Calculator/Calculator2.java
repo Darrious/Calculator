@@ -297,7 +297,7 @@ public class Calculator2
         String output = "";
         for (int i = 0; i < hisArr.size(); i++  )
         {
-            output = output + "\n" + hisArr.get(i);
+            output = output + "\n\n" + hisArr.get(i);
         }
         
         hisText.setText(output);
