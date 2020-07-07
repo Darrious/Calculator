@@ -304,19 +304,32 @@ public class Calculator2
         history.setVisible(true);
         history.setSize(420,225);
         history.setTitle("History");
-        
-        JTextArea hisText = new JTextArea();
-        
-        String output = "";
 
+        JTextArea hisText = new JTextArea();
+        JTextArea title = new JTextArea();
+        String output = "";
+        
+        
         // We add each computation the hisArr. That is printed here
         for (int i = 0; i < hisArr.size(); i++  )
         {
-            output = output + "\n\n" + hisArr.get(i);
+            output = output + hisArr.get(i) + "\n" ;
         }
-        
+
+
+        String titleText = "History";
+        Font font = new Font("Verdana", Font.PLAIN, 17);
+        Font font2 = new Font("Verdana", Font.BOLD, 20);
+
+        hisText.setFont(font); 
+        title.setFont(font2);
+
+        title.setText(titleText);
         hisText.setText(output);
+        
+        history.add(title);
         history.add(hisText);
+
         
         
         
