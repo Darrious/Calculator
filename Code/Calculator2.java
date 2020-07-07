@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
+
 
 /**
  * @author Darrious Barger
@@ -38,6 +38,7 @@ public class Calculator2
     
     public Calculator2()
     {
+    	// Action listener for the numbers
         numberListener numList = new numberListener();
         
         //Setting up frame
@@ -90,6 +91,8 @@ public class Calculator2
         resultLabel.setVisible(true);
         clearButton.setVisible(true);
         
+
+        // Adding action listener for the history button
         hisButton.addActionListener(new ActionListener()
         {
 
@@ -102,6 +105,7 @@ public class Calculator2
             
         });
         
+        // Adding action listener for the equals button
         calculateButton.addActionListener(new ActionListener()
         {
 
@@ -127,6 +131,7 @@ public class Calculator2
         
         });
         
+        // Adding action listener for the C button
         clearButton.addActionListener(new ActionListener()
         {
 
@@ -140,6 +145,7 @@ public class Calculator2
         
         });
         
+        // Adding action listener for the back button
         backButton.addActionListener(new ActionListener()
         {
 
@@ -153,6 +159,7 @@ public class Calculator2
         
         });
         
+        // Adding action listener for the +/- button
         pmButton.addActionListener(new ActionListener()
         {
 
@@ -175,6 +182,7 @@ public class Calculator2
         });
         
         
+        // Adding the five rows of buttons to the button panel
         buttonPanel.add(clearButton);
         buttonPanel.add(pmButton);
         buttonPanel.add(hisButton);
@@ -219,24 +227,24 @@ public class Calculator2
         multButton.addActionListener(numList);
         dotButton.addActionListener(numList);
         
-        
+        // Styling certain buttons
         backButton.setBackground(Color.ORANGE);
         subButton.setBackground(Color.ORANGE);
         addButton.setBackground(Color.ORANGE);
         multButton.setBackground(Color.ORANGE);
         divButton.setBackground(Color.ORANGE);
         
+        // Making the button panel 5x5 and adding it the JFrame
         buttonPanel.setLayout(new GridLayout(5, 5));
-       
         calculator.add(buttonPanel, BorderLayout.PAGE_END);
     
         
-        
+        // Adding font
         Font font = new Font("Verdana", Font.BOLD, 25);
         infixExpression.setFont(font);
         textFieldPanel.add(infixExpression);
         
-        
+        // Adding the textFieldPanel to JFrame
         calculator.add(textFieldPanel, BorderLayout.PAGE_START);
         
         //resultPanel.add( resultLabel);
@@ -246,6 +254,7 @@ public class Calculator2
         calculator.setVisible(true);
     }
     
+    // returns calculator JFrame
     public JFrame getFrame()
     {
         calculator.setVisible(true);
@@ -253,13 +262,15 @@ public class Calculator2
         
         return calculator;
     }
-    
+
+
+    // Returns the expression that is in the box (this will be computed)
     public JTextField getField()
     {
         return infixExpression;
     }
     
-
+    // Main method
     public static void main(String[] args)
     {
         Calculator2 calc = new Calculator2();
@@ -267,7 +278,7 @@ public class Calculator2
     
     
    
-    
+    // Generic action listener for the numbered buttons and other misc buttons
     private class numberListener implements ActionListener
     {
         @Override
@@ -283,6 +294,8 @@ public class Calculator2
         
     }
     
+
+    // This method adds a new JFrame for the history function
     private void History()
     {
         
@@ -295,6 +308,8 @@ public class Calculator2
         JTextArea hisText = new JTextArea();
         
         String output = "";
+
+        // We add each computation the hisArr. That is printed here
         for (int i = 0; i < hisArr.size(); i++  )
         {
             output = output + "\n\n" + hisArr.get(i);
