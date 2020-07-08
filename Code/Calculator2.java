@@ -44,7 +44,7 @@ public class Calculator2
         //Setting up frame
         calculator = new JFrame();
         calculator.setVisible(true);
-        calculator.setSize(420,225);
+        calculator.setSize(420,270);
         calculator.setTitle("Calculator");
         calculator.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
@@ -74,6 +74,9 @@ public class Calculator2
         calculateButton = new JButton("=");
         JButton pmButton = new JButton("+/-");
         
+
+
+
         clearButton = new JButton("C");
         infixExpression = new JTextField(15);
         resultLabel = new JLabel("Result");
@@ -81,6 +84,8 @@ public class Calculator2
         eval = new ExpressionEvaluator();
         
         
+        addButton.setPreferredSize(new Dimension(35, 35));
+
         // Setting names for JUnit tests
         infixExpression.setName("infixExpression");
         resultLabel.setName("resultLabel");
@@ -185,29 +190,33 @@ public class Calculator2
         // Adding the five rows of buttons to the button panel
         buttonPanel.add(clearButton);
         buttonPanel.add(pmButton);
+        buttonPanel.add(new JButton());
         buttonPanel.add(hisButton);
         buttonPanel.add(backButton);
-                
+        
+
         buttonPanel.add(sevenButton);
         buttonPanel.add(eightButton);
         buttonPanel.add(nineButton);
+        buttonPanel.add(new JButton("("));
         buttonPanel.add(divButton);
-
                
         buttonPanel.add(fourButton);
         buttonPanel.add(fiveButton);
         buttonPanel.add(sixButton);
+        buttonPanel.add(new JButton(")"));
         buttonPanel.add(multButton);
         
         buttonPanel.add(oneButton);
         buttonPanel.add(twoButton);
         buttonPanel.add(threeButton);
+        buttonPanel.add(new JButton());
         buttonPanel.add(subButton);
-        buttonPanel.add(addButton);
         
         buttonPanel.add(zeroButton);
         buttonPanel.add(dotButton);
         buttonPanel.add(calculateButton);
+        buttonPanel.add(new JButton());
         buttonPanel.add(addButton);
         
         // Adding action listeners to some buttons
@@ -235,7 +244,7 @@ public class Calculator2
         divButton.setBackground(Color.ORANGE);
         
         // Making the button panel 5x5 and adding it the JFrame
-        buttonPanel.setLayout(new GridLayout(5, 5));
+        buttonPanel.setLayout(new GridLayout(5, 6));
         calculator.add(buttonPanel, BorderLayout.PAGE_END);
     
         
