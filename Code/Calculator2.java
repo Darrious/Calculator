@@ -69,7 +69,7 @@ public class Calculator2
         nineButton = new JButton("9");
         zeroButton = new JButton("0");
         dotButton = new JButton(".");
-        backButton = new JButton("Back");
+        backButton = new JButton("CE");
         hisButton = new JButton("History");
         calculateButton = new JButton("=");
         pmButton = new JButton("+/-");
@@ -189,9 +189,9 @@ public class Calculator2
         
         
         // Adding the five rows of buttons to the button panel
-        buttonPanel.add(clearButton);
-        buttonPanel.add(pmButton);
-        buttonPanel.add(new JButton());
+        //buttonPanel.add(clearButton);
+        buttonPanel.add(parLButton);
+        buttonPanel.add(parRButton);
         buttonPanel.add(hisButton);
         buttonPanel.add(backButton);
         
@@ -199,28 +199,24 @@ public class Calculator2
         buttonPanel.add(sevenButton);
         buttonPanel.add(eightButton);
         buttonPanel.add(nineButton);
-        buttonPanel.add(parLButton);
         buttonPanel.add(divButton);
                
         buttonPanel.add(fourButton);
         buttonPanel.add(fiveButton);
         buttonPanel.add(sixButton);
-        buttonPanel.add(parRButton);
         buttonPanel.add(multButton);
         
         buttonPanel.add(oneButton);
         buttonPanel.add(twoButton);
         buttonPanel.add(threeButton);
-        buttonPanel.add(new JButton());
         buttonPanel.add(subButton);
         
         buttonPanel.add(zeroButton);
         buttonPanel.add(dotButton);
         buttonPanel.add(calculateButton);
-        buttonPanel.add(new JButton());
         buttonPanel.add(addButton);
         
-        
+
         // Adding action listeners to some buttons
         oneButton.addActionListener(numList);
         twoButton.addActionListener(numList);
