@@ -28,7 +28,7 @@ public class Calculator2
     private JButton multButton;
     private JButton oneButton, twoButton, threeButton, fourButton,
             fiveButton, sixButton, sevenButton, eightButton, nineButton,
-            zeroButton, backButton, hisButton;
+            zeroButton, backButton, hisButton, parLButton, parRButton, pmButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
     //private JPanel resultPanel;
@@ -72,8 +72,9 @@ public class Calculator2
         backButton = new JButton("Back");
         hisButton = new JButton("History");
         calculateButton = new JButton("=");
-        JButton pmButton = new JButton("+/-");
-        
+        pmButton = new JButton("+/-");
+        parRButton = new JButton(")");
+        parLButton = new JButton("(");
 
 
 
@@ -198,13 +199,13 @@ public class Calculator2
         buttonPanel.add(sevenButton);
         buttonPanel.add(eightButton);
         buttonPanel.add(nineButton);
-        buttonPanel.add(new JButton("("));
+        buttonPanel.add(parLButton);
         buttonPanel.add(divButton);
                
         buttonPanel.add(fourButton);
         buttonPanel.add(fiveButton);
         buttonPanel.add(sixButton);
-        buttonPanel.add(new JButton(")"));
+        buttonPanel.add(parRButton);
         buttonPanel.add(multButton);
         
         buttonPanel.add(oneButton);
@@ -218,6 +219,7 @@ public class Calculator2
         buttonPanel.add(calculateButton);
         buttonPanel.add(new JButton());
         buttonPanel.add(addButton);
+        
         
         // Adding action listeners to some buttons
         oneButton.addActionListener(numList);
@@ -235,7 +237,10 @@ public class Calculator2
         divButton.addActionListener(numList);
         multButton.addActionListener(numList);
         dotButton.addActionListener(numList);
-        
+        parRButton.addActionListener(numList);
+        parLButton.addActionListener(numList);
+
+
         // Styling certain buttons
         backButton.setBackground(Color.ORANGE);
         subButton.setBackground(Color.ORANGE);
