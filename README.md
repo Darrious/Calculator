@@ -4,7 +4,7 @@ This calculator can read an [infix expression](https://en.wikipedia.org/wiki/Inf
 
 ## Getting Started
 
-To run this program, compile and run the `Calculator2.java`. This can be done in an IDE or in the console.
+To run this program, compile and run the `Calculator.java`. This can be done in an IDE or in the console.
 
 ## License
 

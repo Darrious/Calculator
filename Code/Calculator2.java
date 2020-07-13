@@ -13,7 +13,7 @@ import javax.swing.*;
 
 /**
  * @author Darrious Barger
- * @version 1
+ * 
  */
 public class Calculator
 {
@@ -31,7 +31,6 @@ public class Calculator
             zeroButton, backButton, hisButton, parLButton, parRButton, pmButton;
     private JPanel buttonPanel;
     private JPanel textFieldPanel;
-    //private JPanel resultPanel;
     private ExpressionEvaluator eval;
     private ArrayList<String> hisArr;
 
@@ -257,14 +256,10 @@ public class Calculator
         // Adding the textFieldPanel to JFrame
         calculator.add(textFieldPanel, BorderLayout.PAGE_START);
         
-        //resultPanel.add( resultLabel);
-        //calculator.add( resultPanel, BorderLayout.CENTER);
-        
-        
         calculator.setVisible(true);
     }
     
-    // returns calculator JFrame
+    // Returns calculator JFrame
     public JFrame getFrame()
     {
         calculator.setVisible(true);
@@ -283,7 +278,7 @@ public class Calculator
     // Main method
     public static void main(String[] args)
     {
-        Calculator calc = new Calculator();
+        Calculator2 calc = new Calculator2();
     }
     
     
@@ -338,11 +333,7 @@ public class Calculator
         hisText.setText(output);
         
         history.add(title);
-        history.add(hisText);
-
-        
-        
-        
+        history.add(hisText);      
         
     }
     
